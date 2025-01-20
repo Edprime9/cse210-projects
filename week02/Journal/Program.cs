@@ -5,6 +5,7 @@ class Program
 {
     static void Main(string[] args)
     {
+        Journal journal = new();
         while (true)
         {
         Console.WriteLine("1. Write new entry");
@@ -20,7 +21,7 @@ class Program
 
         if (userInput == "1")
         {
-            Console.WriteLine("Write new entry");
+            journal.CreateNewEntry();
         }
         else if (userInput == "2")
         {

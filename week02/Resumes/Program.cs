@@ -6,7 +6,7 @@ class Program
     static void Main(string[] args)
     {
         // Create the first job instance
-        Job job1 = new Job
+        Job job1 = new()
         {
             _jobTitle = "Project Manager",
             _company = "PrimeHub Solution",
@@ -15,7 +15,7 @@ class Program
         };
 
         // Create the second job instance
-        Job job2 = new Job
+        Job job2 = new()
         {
             _jobTitle = "Social Media Manager",
             _company = "Pixel Palace",
@@ -24,7 +24,7 @@ class Program
         };
 
         // Create the resume instance
-        Resume myResume = new Resume
+        Resume myResume = new()
         {
             _name = "Eli Ibitamuno"
         };
