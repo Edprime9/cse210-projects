@@ -6,7 +6,7 @@ class Program
     {
         Console.WriteLine("Welcome to the Journal Program!");
 
-        Journal journal = new Journal();
+        Journal aJournal = new Journal();
         string userChoice = "";
 
         while (userChoice != "5")
@@ -24,16 +24,16 @@ class Program
             switch (userChoice)
             {
                 case "1": 
-                    journal.AddEntry();
+                    aJournal.AddEntry();
                     break;
                 case "2": 
-                    journal.DisplayJournal();
+                    aJournal.DisplayJournal();
                     break;
                 case "3": 
-                    journal.SaveToFile();
+                    aJournal.SaveToFile();
                     break;
                 case "4":
-                    journal.LoadFromFile();
+                    aJournal.LoadFromFile();
                     break;
                 case "5":
                     Console.WriteLine("Goodbye!");
