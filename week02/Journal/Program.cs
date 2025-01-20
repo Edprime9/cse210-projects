@@ -1,48 +1,47 @@
 using System;
-using System.Runtime.CompilerServices;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Journal journal = new();
-        while (true)
-        {
-        Console.WriteLine("1. Write new entry");
-        Console.WriteLine("2. Display");
-        Console.WriteLine("3. Save");
-        Console.WriteLine("4. Load");
-        Console.WriteLine("5. Quit");
+        Console.WriteLine("Welcome to the Journal Program!");
 
-        Console.Write("Enter selecton: ");
-        string userInput = Console.ReadLine();
+        Journal journal = new Journal();
+        string userChoice = "";
 
-        Console.WriteLine($"User Selected {userInput}");
+        while (userChoice != "5")
+        {
+            Console.WriteLine("1. Write a new entry");
+            Console.WriteLine("2. Display the journal");
+            Console.WriteLine("3. Save the journal to a file");
+            Console.WriteLine("4. Load the journal from a file");
+            Console.WriteLine("5. Quit");
 
-        if (userInput == "1")
-        {
-            journal.CreateNewEntry();
-        }
-        else if (userInput == "2")
-        {
-            Console.WriteLine("Display Journal");
-        }
-        else if (userInput == "3")
-        {
-            Console.WriteLine("Save Journal");
-        }
-        else if (userInput == "4")
-        {
-            Console.WriteLine("Load Journal");
-        }
-        else if (userInput == "5")
-        {
-            return;
-        }
-        else
-        {
-            Console.WriteLine("Please try again");
-        }
-        }
+            Console.Write("Choose an option: ");
+            userChoice = Console.ReadLine();
+
+
+            switch (userChoice)
+            {
+                case "1": 
+                    journal.AddEntry();
+                    break;
+                case "2": 
+                    journal.DisplayJournal();
+                    break;
+                case "3": 
+                    journal.SaveToFile();
+                    break;
+                case "4":
+                    journal.LoadFromFile();
+                    break;
+                case "5":
+                    Console.WriteLine("Goodbye!");
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice. Please try again.");
+                    break;
+            }
+        }       
     }
 }
