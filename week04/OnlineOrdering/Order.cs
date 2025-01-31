@@ -25,7 +25,7 @@ class Order
             total += product.GetTotalCost();
         }
 
-        decimal shippingCost = _customer.IsInUSA() ? 5 : 35;
+        decimal shippingCost = _customer.IsInNigeria() ? 5 : 35;
         return total + shippingCost;
     }
 
