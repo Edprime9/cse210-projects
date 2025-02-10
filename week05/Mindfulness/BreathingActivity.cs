@@ -1,23 +1,32 @@
-using System;
+using System.IO.Compression;
 
-class BreathingActivity : Activity
+namespace activity
 {
-    
-    /* BreathingActivity() is a special method 
-    called a constructor that is used to
-     initialize objects */
-    public BreathingActivity() : base("Breathing Activity", "Focus on your breathing to relax.", 15) {}
-    
-    public override void Run()
+    public class BreathingActivity : Activity
     {
-       DisplayStartingMessage(); //Displays a starting message
-        for (int i = 0; i < _duration / 3; i++)
+        public BreathingActivity(string name, string description, int duration) : base(name, description, duration)     
         {
-            Console.WriteLine("Breathe in..."); //Prompts the user to inhale.
-            ShowCountDown(3); //Displays Counts down
-            Console.WriteLine("Breathe out..."); // Prompts the user to exhale.
-            ShowCountDown(3);
-    }
-    DisplayEndingMessage();
+
+        }
+        public void Run()
+        {
+            DateTime n = DateTime.Now;
+            //Console.WriteLine(n);
+            DateTime q = n.AddSeconds(GetDuration());
+            //Console.WriteLine(q);
+            while (DateTime.Now<q)
+            {
+                Console.Write($"Breathe in...");
+                ShowCountDown(5);
+                Console.WriteLine();
+
+                Console.Write($"Now Breathe out...");
+                ShowCountDown(5);
+
+                Console.WriteLine();
+                Console.WriteLine();
+            }
+       
+        }
     }
 }

@@ -1,33 +1,65 @@
-using System;
-
-class ReflectingActivity : Activity
+namespace activity
 {
-    private List<string> _prompts = new List<string> { "Think about a time you overcame a challenge.", "Think about a moment of kindness you experienced." };
-    private List<string> _questions = new List<string> { "How did you feel?", "What did you learn?", "How has this affected you?" };
-
-    public ReflectingActivity() : base("Reflecting Activity", "Reflect on past experiences with guiding questions.", 10) {}
-
-    public override void Run()
+    public class ReflectingActivity : Activity
     {
-        DisplayStartingMessage();
-        Console.WriteLine(GetRandomPrompt());
-        ShowSpinner(3);
-        DisplayQuestions();
-        DisplayEndingMessage();
-    }
+        private List<string> _prompts;
+        private List<string> _questions;
 
-    private string GetRandomPrompt()
-    {
-        Random rand = new Random();
-        return _prompts[rand.Next(_prompts.Count)];
-    }
-
-    private void DisplayQuestions()
-    {
-        foreach (var question in _questions)
+        public ReflectingActivity(string name, string description, int duration) : base(name, description, duration)
         {
-            Console.WriteLine(question);
-            ShowSpinner(3);
+            _prompts=["Think of a time when you stood up for someone else.","Think of a time when you did something really difficult.","Think of a time when you helped someone in need.","Think of a time when you did something truly selfless."];
+
+            _questions=["Why was this experience meaningful to you? ","Have you ever done anything like this before? ","How did you get started?","How did you feel when it was complete? ","What made this time different than other times when you were not as successful? ","What is your favorite thing about this experience? ","What could you learn from this experience that applies to other situations? ","What did you learn about yourself through this experience? ","How can you keep this experience in mind in the future? "];
+        }
+        public void Run()
+        {
+            DateTime n = DateTime.Now;
+            //Console.WriteLine(n);
+            DateTime q = n.AddSeconds(GetDuration());
+            //Console.WriteLine(q);
+            while (DateTime.Now<q)
+            {
+                Console.WriteLine(GetRandomQuestion());
+                Thread.Sleep(6);
+            }
+        }
+
+        public string GetRandomPrompt()
+        {
+            Random randomGenerator = new Random();
+            int number = randomGenerator.Next(_prompts.Count());
+            
+            return _prompts[number];
+        }
+        public string GetRandomQuestion()
+        {   
+            Random randomGenerator = new Random();
+            int number = randomGenerator.Next(_questions.Count());
+            
+            return _questions[number];     
+        }
+
+        public void DisplayPrompt()
+        {
+            Console.WriteLine(GetRandomPrompt());
+        }
+        public void DisplayQuestions()
+        {
+           
+
+           DateTime n = DateTime.Now;
+            //Console.WriteLine(n);
+            DateTime q = n.AddSeconds(GetDuration());
+            //Console.WriteLine(q);
+            while (DateTime.Now<q)
+            {
+                Console.Write(GetRandomQuestion());
+                ShowSpinner(7);
+                
+                Console.WriteLine();
+                Console.WriteLine();
+                
+            }
         }
     }
 }
