@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-
-// Address Class
-class Address
+public class Address
 {
     private string _street;
     private string _city;
@@ -11,19 +7,35 @@ class Address
 
     public Address(string street, string city, string state, string country)
     {
-        _street = street;
-        _city = city;
-        _state = state;
-        _country = country;
+        _street=street;
+        _city=city;
+        _state=state;
+        _country=country;
     }
 
-    public bool IsInNigeria()
+    public void SetAddress(string street,string city, string state, string country)
     {
-        return _country.ToLower() == "nigeria";
+        _street=street;
+        _city=city;
+        _state=state;
+        _country=country;
     }
 
-    public string GetFullAddress()
+    public bool InNigeria()
     {
-        return $"{_street}\n{_city}, {_state}\n{_country}";
+        if(_country == "NIG")
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
+
+    public string address()
+    {
+        return $"{_street} {_city} {_state} {_country}";
+    }
+
 }

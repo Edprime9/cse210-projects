@@ -1,28 +1,24 @@
-using System;
-using System.Collections.Generic;
-class Customer
+using System.Text;
+
+public class Customer
 {
     private string _name;
     private Address _address;
 
-    public Customer(string name, Address address)
+    public Customer (string name, Address address)
     {
-        _name = name;
-        _address = address;
+        _name =name;
+        _address=address;
+    }
+    
+    
+    public bool CheckNIG()
+    {   
+        return _address.InNigeria();
     }
 
-    public bool IsInNigeria()
-    {
-        return _address.IsInNigeria();
-    }
-
-    public string GetName()
+    public string name()
     {
         return _name;
-    }
-
-    public string GetAddress()
-    {
-        return _address.GetFullAddress();
     }
 }

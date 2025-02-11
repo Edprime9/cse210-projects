@@ -1,46 +1,58 @@
-using System;
-using System.Collections.Generic;
-
-class Order
+public class Order
 {
-    private List<Product> _products;
+    private List<Product> _products = new List<Product>();
     private Customer _customer;
+    public Address _address;
 
-    public Order(Customer customer)
+
+    public Order (Product x,Product y,Product z)
     {
-        _customer = customer;
-        _products = new List<Product>();
+        _products.Add(x);
+        _products.Add(y);
+        _products.Add(z);
+    }
+    public Order (string m, Address n)
+    {
+        _customer=new Customer(m,n);
+        _address= n;
     }
 
-    public void AddProduct(Product product)
-    {
-        _products.Add(product);
-    }
-
-    public decimal GetTotalCost()
-    {
-        decimal total = 0;
-        foreach (var product in _products)
+      //for suming the total of a order
+    public double TotalOrder()
+    {   
+        double sum = 0;
+        foreach(Product a in _products)
         {
-            total += product.GetTotalCost();
+            sum+=a.TotalCost();  
+        }
+        return sum;
+    }
+    
+    //for determinig shipping cost
+    public double shippingCost()
+    {   
+        double sum = 0;
+            if (_customer.CheckNIG() ==  true)
+        {
+            return sum+=5;
+        }
+        else
+        {
+            return sum+=35;
+        }
+    }
+
+    public void PackingLabel()
+    {   
+        foreach(Product a in _products)
+        {
+            Console.WriteLine(a.Display());
         }
 
-        decimal shippingCost = _customer.IsInNigeria() ? 5 : 35;
-        return total + shippingCost;
     }
 
-    public string GetPackingLabel()
+    public void ShippingLabel()
     {
-        string label = "Packing Label:\n";
-        foreach (var product in _products)
-        {
-            label += $"- {product.GetPackingLabel()}\n";
-        }
-        return label;
-    }
-
-    public string GetShippingLabel()
-    {
-        return $"Shipping Label:\n{_customer.GetName()}\n{_customer.GetAddress()}";
+       Console.WriteLine($"{_customer.name()}: Address:- {_address.address()}" );
     }
 }

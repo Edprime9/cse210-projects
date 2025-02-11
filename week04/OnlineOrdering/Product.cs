@@ -1,27 +1,26 @@
-using System;
-using System.Collections.Generic;
-class Product
+public class Product
 {
-    private string _name;
+    private string _productName;
     private string _productId;
-    private decimal _price;
-    private int _quantity;
+    private double _priceProduct;
+    private int _productQty;
 
-    public Product(string name, string productId, decimal price, int quantity)
+    public Product(string name,string id, double price, int qty)
     {
-        _name = name;
-        _productId = productId;
-        _price = price;
-        _quantity = quantity;
+        _productName=name;
+        _productId=id;
+        _priceProduct=price;
+        _productQty=qty;
+    }
+    
+    public double TotalCost()
+    {
+        return _productQty*_priceProduct;
     }
 
-    public decimal GetTotalCost()
+    public String Display()
     {
-        return _price * _quantity;
+        return $"{_productName} : {_productId}";
     }
 
-    public string GetPackingLabel()
-    {
-        return $"{_name} (ID: {_productId})";
-    }
 }
