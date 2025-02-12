@@ -1,19 +1,16 @@
-using System;
-using System.Collections.Generic;
-
-class Comment
+public class Comment
 {
-    public string Name { get; }
-    public string Text { get; }
+    public List<string> _name = new List<string>();
+    public List<string> _text = new List<string>();
 
-    public Comment(string name, string text)
-    {
-        Name = name;
-        Text = text;
-    }
 
-    public void Display()
+    public void displayComment()
     {
-        Console.WriteLine($" - {Name}: {Text}");
+        for (int i = 0; i < _name.Count; i++)
+            {string name = _name[i];
+            string comment = _text[i];
+            Console.WriteLine($"{name}: {comment}");}
+        }
     }
-}
+            
+    
