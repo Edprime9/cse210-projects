@@ -1,36 +1,44 @@
 using System;
-using System.Collections.Generic;
+using System.Runtime.InteropServices;
+
 class Program
 {
-    static void Main()
+    static void Main(string[] args)
     {
-        // Create videos
-        Video video1 = new Video("HTML Basics Tutorial", "W3Schools", 600);
-        Video video2 = new Video("Advanced C# Programming", "Programiz", 1200);
-        Video video3 = new Video("Understanding CSS Concepts", "Udemy", 900);
+        Console.WriteLine("Hello World! This is the YouTubeVideos Project.");
+        
+        Video vid1 = new Video("HTML Basics Tutorial", "W3Schools", 600);
+        Video vid2 = new Video("Advanced C# Programming", "Programiz", 1200);
+        Video vid3 = new Video("Understanding CSS Concepts", "Udemy", 900);
+        Video vid4 = new Video("Python","Youtude",500);
+        
+        List<Video> youtube = new List<Video>();
+        youtube.Add(vid1);
+        vid1._comments=["Awesome","Great","Nice brand","Wow how can i get that!"];
+        Comment vidOne = new Comment();
+        vidOne._name=["Andrew","fred","Joshua","John"];
+        vidOne._text=["Thanks for simpliying it","super useful for my project","loved the depth of the topic","Wow how can i get that!"];
+       
+        youtube.Add(vid2);
+        vid2._comments=["Pauline","Great","Nice brand"];
+        Comment vidtwo = new Comment();
+        vidtwo._name=["Andrew","James","Joshua"];
+        vidtwo._text=["Awesome","Clear and concise","This was the best explanation so far"];
 
-        // Add comments to video 1
-        video1.AddComment(new Comment("Pauline", "Great explanation!"));
-        video1.AddComment(new Comment("Steve", "Very helpful, thanks!"));
-        video1.AddComment(new Comment("Boateng", "Clear and concise."));
-
-        // Add comments to video 2
-        video2.AddComment(new Comment("Moroni", "Loved the depth of the topic!"));
-        video2.AddComment(new Comment("Atisi", "Can you make more like this?"));
-        video2.AddComment(new Comment("Tamunotonye Gogo", "Super useful for my project."));
-
-        // Add comments to video 3
-        video3.AddComment(new Comment("Miriam", "OOP is finally making sense!"));
-        video3.AddComment(new Comment("Jerry", "This was the best explanation so far."));
-        video3.AddComment(new Comment("Murphy", "Thanks for breaking it down."));
-
-        // Store videos in a list
-        List<Video> videos = new List<Video> { video1, video2, video3 };
-
-        // Display video details
-        foreach (var video in videos)
+        foreach(var vid in youtube)
         {
-            video.DisplayVideoInfo();
+            vid.Display();
+            Console.WriteLine();
         }
+
+        Console.WriteLine("Video One Comments");
+        vidOne.displayComment();
+        Console.WriteLine();
+
+        Console.WriteLine("Video Two Comments");
+        vidtwo.displayComment();
+
+       
+       
     }
 }
