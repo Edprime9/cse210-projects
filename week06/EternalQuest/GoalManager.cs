@@ -43,7 +43,7 @@ namespace Goal
             _goals.Add(goal);
 
 
-            double myDouble = 9.78;
+            double myDouble = 7.95;
             int myInt = (int) myDouble;
 
         }
