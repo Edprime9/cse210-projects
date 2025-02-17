@@ -27,7 +27,7 @@ class Program
                 Console.WriteLine("1. Simple Goal");
                 Console.WriteLine("2. Eternal Goal");
                 Console.WriteLine("3. Checklist Gaol");
-                Console.WriteLine("What type of goal would you love to create: ");
+                Console.Write("What type of goal would you love to create: ");
                 string goal = Console.ReadLine();
                 if (goal=="1")
                 {
@@ -42,8 +42,6 @@ class Program
                     goalManager.CreateGoal();
                 }
             }
-
-
         }
     }
 }
